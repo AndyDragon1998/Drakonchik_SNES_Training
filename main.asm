@@ -26,12 +26,15 @@
 
 ; enters here in forced blank
 Main:
-
-; note, nothing is active on the main screen,
-; so only the main background color will show.
-; $212c is the main screen register	
+	.a16 ; the setting from init code
+	.i16
+	phk
+	plb
+		
+	A16				; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
 
 	; Start the State Machine by initializing the first state(Normally IntroState)
+	ldx #$00
 	jsr stateMachineStart
 
 MainLoop:

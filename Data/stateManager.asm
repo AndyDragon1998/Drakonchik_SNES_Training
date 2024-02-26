@@ -15,24 +15,57 @@
 .include "gameState.asm"
 .include "overState.asm"
 
+stateList:
+	.addr introStart
+	.addr introUpdate
+	.addr introDraw
+	.addr introEnd
+	.addr menuStart
+	.addr menuUpdate
+	.addr menuDraw
+	.addr menuEnd
+	.addr gameStart
+	.addr gameUpdate
+	.addr gameDraw
+	.addr gameEnd
+	.addr overStart
+	.addr overUpdate
+	.addr overDraw
+	.addr overEnd
 
 
 stateMachineStart:
 
-	jsr introStart
+	jsr (stateList,x)
 
 rts
 
 stateMachineUpdate:
 
-	jsr introUpdate
+	jsr (stateList,x)
 rts
 
 stateMachineDraw:
-
+	jsr (stateList,x)
 
 rts
 
 stateMachineChange:
 
 rts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

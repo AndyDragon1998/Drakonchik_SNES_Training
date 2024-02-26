@@ -13,12 +13,7 @@
 
 
 introStart:
-	.a16 ; the setting from init code
-	.i16
-	phk
-	plb
-		
-	A16				; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
+
 	
 	stz CGADD 		; $2121 set color address to 0
 	lda #$0000	 	; palette low byte gggrrrrr
@@ -37,20 +32,18 @@ introStart:
 	; turn the screen on (end forced blank)
 	lda #FULL_BRIGHT ; $0f
 	sta INIDISP ; $2100
-
+	inx
 
 rts
 
 introUpdate:
-	inc a
-	sta CGDATA 		; $2122 - write twice
-	lda #$00	 	; palette high byte -bbbbbgg
-	sta CGDATA 		; $2122
+	
+	inx
 rts
 
 introDraw:
 
-
+	dex
 rts
 
 introEnd:
