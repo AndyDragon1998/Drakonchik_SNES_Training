@@ -35,18 +35,18 @@ stateList:
 
 
 stateMachineStart:
-
-	jsr (stateList,x)
+	; .loword() clips the value to 16 bit
+	jsr (.loword(stateList),x)
 
 rts
 
 stateMachineUpdate:
 
-	jsr (stateList,x)
+	jsr (.loword(stateList),x)
 rts
 
 stateMachineDraw:
-	jsr (stateList,x)
+	jsr (.loword(stateList),x)
 
 rts
 

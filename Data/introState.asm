@@ -43,10 +43,10 @@ rts
 
 introDraw:
 
-	dex
+	inx
 rts
 
 introEnd:
-
+	inx
 
 rts

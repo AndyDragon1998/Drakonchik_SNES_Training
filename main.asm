@@ -10,7 +10,12 @@
 ;*                                                                           *;
 ;*****************************************************************************;
 
-.p816
+
+;puts the assembler in 65816 mode
+.p816 
+
+;tell the assembler to automatically adjust register size depending on REP / SEP changes 
+;(handled through macros like A8, AXY16, etc)
 .smart
 
 ; asm files needed to initialize the SNES machine, better don't touch them
@@ -34,7 +39,7 @@ Main:
 	A16				; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
 
 	; Start the State Machine by initializing the first state(Normally IntroState)
-	ldx #$00
+	ldx #$0000
 	jsr stateMachineStart
 
 MainLoop:
