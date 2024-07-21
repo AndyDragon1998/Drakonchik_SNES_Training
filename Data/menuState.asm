@@ -95,12 +95,24 @@ menuStart:
 rts
 
 menuUpdate:
-	
+
 	inx
 rts
 
 menuDraw:
-
+	A8
+	XY16
+	.a8
+	.i16
+	;should work fine regardless of size of A
+		lda in_nmi ;load A register with previous in_nmi
+	@check_again:	
+		WAI ;wait for an interrupt
+		cmp in_nmi	;compare A to current in_nmi
+					;wait for it to change
+					;make sure it was an nmi interrupt
+		beq @check_again
+		rts
 	dex
 rts
 
@@ -115,13 +127,13 @@ rts
 
 BG_Palette:
 ; 32 bytes
-.incbin "../Graphics/Palettes/DemonGirl.pal"
+.incbin "../Graphics/Palettes/moon.pal"
 
 Tiles:
 ; 4bpp tileset
-.incbin "../Graphics/Tiles/DemonGirl.chr"
+.incbin "../Graphics/Tiles/moon.chr"
 End_Tiles:
 
 Tilemap:
 ; $700 bytes
-.incbin "../Graphics/Maps/DemonGirl.map"
+.incbin "../Graphics/Maps/moon.map"

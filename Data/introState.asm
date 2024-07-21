@@ -13,10 +13,9 @@
 
 
 introStart:
-
 	
 	stz CGADD 		; $2121 set color address to 0
-	lda #$0000	 	; palette low byte gggrrrrr
+	lda #$001f	 	; palette low byte gggrrrrr
 				 	; 1f = all the red bits
 	sta CGDATA 		; $2122 - write twice
 	lda #$00	 	; palette high byte -bbbbbgg
@@ -30,7 +29,7 @@ introStart:
 	; white = $7fff
 
 	; turn the screen on (end forced blank)
-	lda #FULL_BRIGHT ; $0f
+	lda #$0f ; $0f
 	sta INIDISP ; $2100
 	inx
 
@@ -43,7 +42,7 @@ rts
 
 introDraw:
 
-	inx
+	dex
 rts
 
 introEnd:
