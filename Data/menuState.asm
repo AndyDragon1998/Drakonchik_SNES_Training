@@ -11,7 +11,8 @@
 ;*****************************************************************************;
 
 menuStart:
-
+	.a16 ; the setting from init code
+	.i16
 	; DMA from BG_Palette to CGRAM
 	stz CGADD ; $2121 cgram address = zero
 	
@@ -46,7 +47,6 @@ menuStart:
 	stx $4305 ; length
 	lda #1
 	sta MDMAEN ; $420b start dma, channel 0
-	
 	
 	
 	; DMA from Tilemap to VRAM	
