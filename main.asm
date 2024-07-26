@@ -26,6 +26,10 @@
 
 .include "Data/stateManager.asm"
 
+.segment "BSS"
+
+gameState: .res 2
+
 
 .segment "CODE"
 
@@ -39,7 +43,8 @@ Main:
 	A16				; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
 
 	; Start the State Machine by initializing the first state(Normally IntroState)
-	ldx #$0000
+	ldx #$0004
+	stx gameState
 	jsr stateMachineStart
 
 MainLoop:

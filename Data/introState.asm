@@ -31,21 +31,25 @@ introStart:
 	; turn the screen on (end forced blank)
 	lda #$0f ; $0f
 	sta INIDISP ; $2100
+	ldx gameState
 	inx
 
 rts
 
 introUpdate:
 	
+	ldx gameState
 	inx
 rts
 
 introDraw:
 
+	ldx gameState
 	dex
 rts
 
 introEnd:
+	ldx gameState
 	inx
 
 rts

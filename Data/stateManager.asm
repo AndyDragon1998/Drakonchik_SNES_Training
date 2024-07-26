@@ -36,16 +36,18 @@ stateList:
 
 stateMachineStart:
 	; .loword() clips the value to 16 bit
+	ldx gameState
 	jsr (.loword(stateList),x)
 
 rts
 
 stateMachineUpdate:
-
+	ldx gameState
 	jsr (.loword(stateList),x)
 rts
 
 stateMachineDraw:
+	ldx gameState
 	jsr (.loword(stateList),x)
 
 rts

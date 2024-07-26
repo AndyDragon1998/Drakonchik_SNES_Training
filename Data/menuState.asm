@@ -90,12 +90,14 @@ menuStart:
 	sta INIDISP ; $2100
 	
 	
+	ldx gameState
 	inx
 
 rts
 
 menuUpdate:
 
+	ldx gameState
 	inx
 rts
 
@@ -113,6 +115,7 @@ menuDraw:
 					;make sure it was an nmi interrupt
 		beq @check_again
 		rts
+	ldx gameState
 	dex
 rts
 
@@ -123,7 +126,7 @@ rts
 
 ; Include all the image data used for Menu Screen
 
-.segment "RODATA1"
+.segment "RODATA"
 
 BG_Palette:
 ; 32 bytes
