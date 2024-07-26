@@ -29,6 +29,7 @@
 .segment "BSS"
 
 gameState: .res 2
+newState:  .res 2
 
 
 .segment "CODE"
@@ -39,11 +40,12 @@ Main:
 	.i16
 	phk
 	plb
-		
-	A16				; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
+	
+	; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
+	A16				
 
 	; Start the State Machine by initializing the first state(Normally IntroState)
-	ldx #$0004
+	ldx #$0000
 	stx gameState
 	jsr stateMachineStart
 

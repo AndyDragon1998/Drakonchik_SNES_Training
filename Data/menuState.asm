@@ -89,16 +89,10 @@ menuStart:
 	lda #FULL_BRIGHT ; $0f = turn the screen on (end forced blank)
 	sta INIDISP ; $2100
 	
-	
-	ldx gameState
-	inx
-
 rts
 
 menuUpdate:
 
-	ldx gameState
-	inx
 rts
 
 menuDraw:
@@ -115,8 +109,7 @@ menuDraw:
 					;make sure it was an nmi interrupt
 		beq @check_again
 		rts
-	ldx gameState
-	dex
+
 rts
 
 menuEnd:
@@ -130,13 +123,13 @@ rts
 
 BG_Palette:
 ; 32 bytes
-.incbin "../Graphics/Palettes/moon.pal"
+.incbin "../Graphics/Palettes/DemonGirl.pal"
 
 Tiles:
 ; 4bpp tileset
-.incbin "../Graphics/Tiles/moon.chr"
+.incbin "../Graphics/Tiles/DemonGirl.chr"
 End_Tiles:
 
 Tilemap:
 ; $700 bytes
-.incbin "../Graphics/Maps/moon.map"
+.incbin "../Graphics/Maps/DemonGirl.map"
