@@ -14,7 +14,13 @@
 .segment "CODE"
 
 introStart:
+	.a16 ; the setting from init code
+	.i16
+	phk
+	plb
 	
+	; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
+	A16		
 	stz CGADD 		; $2121 set color address to 0
 	lda #$001f	 	; palette low byte gggrrrrr
 				 	; 1f = all the red bits
@@ -42,9 +48,10 @@ introUpdate:
 rts
 
 introDraw:
-
+	
 rts
 
 introEnd:
-
+	stz CGADD
+	stz CGDATA
 rts

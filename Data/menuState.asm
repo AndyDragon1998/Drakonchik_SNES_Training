@@ -15,9 +15,14 @@
 menuStart:
 	.a16 ; the setting from init code
 	.i16
-	; DMA from BG_Palette to CGRAM
-	stz CGADD ; $2121 cgram address = zero
+	phk
+	plb
 	
+	; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
+	A16		
+	; DMA from BG_Palette to CGRAM
+	stz CGADD 		; $2121 set color address to 0
+	lda #$001f	 	; palette low byte gggrrrrr
 	stz $4300 ; transfer mode 0 = 1 register write once
 	lda #$22  ; $2122
 	sta $4301 ; destination, cgram data
@@ -125,13 +130,13 @@ rts
 
 BG_Palette:
 ; 32 bytes
-.incbin "../Graphics/Palettes/DemonGirl.pal"
+.incbin "../Graphics/Palettes/ShadowBG.pal"
 
 Tiles:
 ; 4bpp tileset
-.incbin "../Graphics/Tiles/DemonGirl.chr"
+.incbin "../Graphics/Tiles/ShadowBG.chr"
 End_Tiles:
 
 Tilemap:
 ; $700 bytes
-.incbin "../Graphics/Maps/DemonGirl.map"
+.incbin "../Graphics/Maps/ShadowBG.map"
