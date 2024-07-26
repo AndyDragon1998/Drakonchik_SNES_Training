@@ -10,6 +10,8 @@
 ;*                                                                           *;
 ;*****************************************************************************;
 
+.segment "CODE"
+
 menuStart:
 	.a16 ; the setting from init code
 	.i16
@@ -86,7 +88,7 @@ menuStart:
 	lda #BG1_ON	; $01 = only bg 1 is active
 	sta TM ; $212c
 	
-	lda #FULL_BRIGHT ; $0f = turn the screen on (end forced blank)
+	lda #$0f ; $0f = turn the screen on (end forced blank)
 	sta INIDISP ; $2100
 	
 rts
