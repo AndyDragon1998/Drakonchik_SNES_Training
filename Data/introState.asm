@@ -20,7 +20,7 @@ introStart:
 	plb
 	
 	; A8 for 8 bit numbers and A16 for 16 bit adresses I guess...?
-	A16		
+	A8		
 	; DMA from BG_Palette to CGRAM
 	stz CGADD 		; $2121 set color address to 0
 	lda #$001f	 	; palette low byte gggrrrrr
@@ -100,7 +100,13 @@ introStart:
 rts
 
 introUpdate:
+	A8
 	XY16
+rts
+
+introDraw:
+	.a8
+	.i16
 	;should work fine regardless of size of A
 		lda in_nmi ;load A register with previous in_nmi
 	@check_again:	
@@ -109,11 +115,6 @@ introUpdate:
 					;wait for it to change
 					;make sure it was an nmi interrupt
 		beq @check_again
-		rts
-rts
-
-introDraw:
-	
 rts
 
 introEnd:
