@@ -58,7 +58,7 @@ introStart:
 	
 	
 	; DMA from Tilemap to VRAM	
-	ldx #$6000
+	ldx #$6800
 	stx VMADDL ; $2116 set an address in the vram of $6000
 	
 	lda #1
@@ -88,13 +88,14 @@ introStart:
 	; 2107 map address bg 1, steps of $400... -54321yx
 	; y/x = map size... 0,0 = 32x32 tiles
 	; $6000 / $100 = $60
-	lda #$60 ; bg1 map at VRAM address $6000
+	A16
+	lda #$0068 ; bg1 map at VRAM address $6000
 	sta BG1SC ; $2107
 
 	lda #BG1_ON	; $01 = only bg 1 is active
 	sta TM ; $212c
 	
-	lda #$0f ; $0f = turn the screen on (end forced blank)
+	lda #$000f ; $0f = turn the screen on (end forced blank)
 	sta INIDISP ; $2100
 
 rts
